@@ -50,17 +50,12 @@ for(int i=0;i<=word1.length(); i++){
 }
 return word1;
 }
- struct Mexception : std::exception {
-        const char* what() const throw() {
-            const char* ex = "Did not find the word in the text";
-            return ex;
-            }
-    };
+ 
 namespace phonetic{
 
 std::string find (std::string text, std::string word){
      if ((text.length()==0) || (word.length()==0))
-     Mexception();
+        (throw std::invalid_argument("eror"));
      std::string lowtext=ToLower(text);
      std::string lowword=ToLower(word);
      std::string ans="";
@@ -85,7 +80,7 @@ std::string find (std::string text, std::string word){
      if (text[i]=='\0') break;
      i++;
 }
-if (ans=="") Mexception();
+if (ans=="") (throw std::invalid_argument("eror"));
 
 
 
